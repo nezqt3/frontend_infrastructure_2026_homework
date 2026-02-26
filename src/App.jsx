@@ -1,14 +1,13 @@
-import { useState } from 'react'
-import './App.css'
-import MainScreen from './components/MainScreen'
+import { useState } from 'react';
+import './styles/main.css';
+import MainScreen from './components/MainScreen';
 
 function App() {
-
-  return (
-    <div>
-      <MainScreen/>
-    </div>
-  )
+    return (
+        <div>
+            <MainScreen />
+        </div>
+    );
 }
 
-export default App
+export default App;
