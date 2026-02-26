@@ -1,16 +1,52 @@
-# React + Vite
+# Frontend Infrastructure Homework
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Небольшой интерактивный React-сервис: на странице показывается уникальный `UUID v4`, который генерируется при рендере.
 
-Currently, two official plugins are available:
+## Что реализовано
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- React + JSX на Vite.
+- Использование внешней библиотеки из `dependencies` (не React): [`uuid`](https://www.npmjs.com/package/uuid).
+- `EditorConfig` для единых правил форматирования.
+- `ESLint` (flat config) с правилами:
+    - `no-const-assign` (ошибка при попытке переопределить `const`);
+    - `curly`;
+    - `simple-import-sort/imports`;
+    - `react/jsx-uses-vars`.
+- `Prettier` для форматирования.
+- Проверка типов TypeScript (`tsc --noEmit`).
+- Pre-commit hook + `lint-staged`:
+    - линтит staged `js/jsx/ts/tsx`;
+    - форматирует staged файлы;
+    - запускает `ts-check` для `ts/tsx`.
+- NPM-скрипт деплоя в GitHub Pages: `npm run deploy`.
+- GitHub Actions workflow для деплоя из ветки `master` в `gh-pages`.
+- Коммиты в рабочей ветке подписаны.
 
-## React Compiler
+## Технические детали React-части
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- Библиотека для функционала: `uuid`.
+- Файл генерации: `src/utils/generateUuid.js`.
+- Использование в интерфейсе: `src/pages/MainScreen.jsx`.
 
-## Expanding the ESLint configuration
+## Команды
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+```bash
+npm install
+npm run dev
+npm run ts-check
+npm run lint
+npm run format:check
+npm run build
+npm run deploy
+```
+
+## Проверка `no-const-assign`
+
+Код:
+
+```js
+const foo = 'bar';
+foo = 'baz';
+```
+
+Должен падать на ESLint с ошибкой `no-const-assign`, поэтому pre-commit не пропустит такой коммит.

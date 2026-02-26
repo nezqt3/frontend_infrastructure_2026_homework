@@ -5,6 +5,7 @@
     "lib": ["esnext", "dom"],
     "jsx": "react-jsx",
     "allowJs": true,
+    "noEmit": true,
     "strict": true,
     "isolatedModules": true,
     "skipLibCheck": true,

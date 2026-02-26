@@ -1,6 +1,6 @@
-import { useState } from 'react';
 import './styles/main.css';
-import MainScreen from './components/MainScreen';
+
+import MainScreen from './pages/MainScreen';
 
 function App() {
     return (
