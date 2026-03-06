@@ -1,5 +1,5 @@
-import styles from '../styles/pages/main-screen.module.css';
-import { generateUuid } from '../utils/generateUuid.js';
+import styles from '@src/pages/MainScreen/MainScreen.module.css';
+import { generateUuid } from '@src/utils/generateUuid.js';
 
 export default function MainScreen() {
     return (

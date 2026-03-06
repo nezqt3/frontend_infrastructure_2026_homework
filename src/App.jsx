@@ -1,6 +1,6 @@
-import './styles/main.css';
+import '@src/styles/main.css';
 
-import MainScreen from './pages/MainScreen';
+import MainScreen from '@src/pages/MainScreen/MainScreen';
 
 function App() {
     return (
